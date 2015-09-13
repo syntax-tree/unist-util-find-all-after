@@ -1,0 +1,26 @@
+{
+  "name": "unist-util-find-all-after",
+  "version": "0.0.0",
+  "description": "Utility to find nodes after another node",
+  "license": "MIT",
+  "keywords": [
+    "unist",
+    "mdast",
+    "markdown",
+    "retext",
+    "natural",
+    "language",
+    "node",
+    "find",
+    "after",
+    "util",
+    "utility"
+  ],
+  "dependencies": {
+    "wooorm/unist-util-is": "^1.0.0"
+  },
+  "repository": "wooorm/unist-util-find-all-after",
+  "scripts": [
+    "index.js"
+  ]
+}
