@@ -32,34 +32,38 @@
     "LICENSE"
   ],
   "devDependencies": {
-    "browserify": "^11.0.0",
+    "browserify": "^13.0.0",
     "esmangle": "^1.0.0",
-    "istanbul": "^0.3.0",
-    "mdast": "^1.0.0",
-    "mdast-comment-config": "^1.0.0",
-    "mdast-github": "^1.0.0",
-    "mdast-lint": "^1.0.0",
-    "mdast-slug": "^2.0.0",
-    "mdast-validate-links": "^1.0.0",
-    "mocha": "^2.0.0",
+    "remark": "^6.0.0",
+    "remark-cli": "^2.0.0",
+    "remark-preset-wooorm": "^1.0.0",
+    "nyc": "^9.0.1",
+    "tape": "^4.6.2",
     "xo": "^0.17.1"
   },
   "scripts": {
-    "test-api": "mocha --check-leaks test.js",
-    "test-coverage": "istanbul cover _mocha -- test.js",
-    "test-travis": "npm run test-coverage",
-    "test": "npm run test-api",
-    "lint": "xo",
-    "make": "npm run lint && npm run test-coverage",
     "bundle": "browserify index.js --no-builtins -s unistUtilFindAllAfter > unist-util-find-all-after.js",
     "postbundle": "esmangle unist-util-find-all-after.js > unist-util-find-all-after.min.js",
-    "build-md": "mdast . --quiet",
-    "build": "npm run bundle && npm run build-md"
+    "build-md": "remark . -foq",
+    "build": "npm run bundle && npm run build-md",
+    "lint": "xo",
+    "test-api": "node test",
+    "test-coverage": "nyc --reporter lcov tape test.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
   },
   "xo": {
     "space": true,
     "ignore": [
       "unist-util-find-all-after.js"
     ]
+  },
+  "remarkConfig": {
+    "presets": "wooorm"
   }
 }

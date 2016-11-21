@@ -57,7 +57,7 @@ inlineCode: 'code'
 
 ## API
 
-### findAllAfter(parent, index|node\[, test\])
+### findAllAfter(parent, index|node\[, test])
 
 Find the nodes after `index` (or `node`), that pass `test` (when given).
 
