@@ -5,32 +5,21 @@
   "license": "MIT",
   "keywords": [
     "unist",
-    "mdast",
-    "markdown",
-    "retext",
-    "natural",
-    "language",
     "node",
     "find",
     "after",
     "util",
     "utility"
   ],
+  "repository": "https://github.com/wooorm/unist-util-find-all-after",
+  "bugs": "https://github.com/wooorm/unist-util-find-all-after/issues",
+  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+  ],
   "dependencies": {
     "unist-util-is": "^2.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wooorm/unist-util-find-all-after.git"
-  },
-  "author": {
-    "name": "Titus Wormer",
-    "email": "tituswormer@gmail.com"
-  },
-  "files": [
-    "index.js",
-    "LICENSE"
-  ],
   "devDependencies": {
     "browserify": "^13.0.0",
     "esmangle": "^1.0.0",
@@ -42,10 +31,11 @@
     "xo": "^0.17.1"
   },
   "scripts": {
-    "bundle": "browserify index.js --no-builtins -s unistUtilFindAllAfter > unist-util-find-all-after.js",
-    "postbundle": "esmangle unist-util-find-all-after.js > unist-util-find-all-after.min.js",
     "build-md": "remark . -foq",
-    "build": "npm run bundle && npm run build-md",
+    "bundle": "browserify index.js --no-builtins -s unistUtilFindAllAfter > unist-util-find-all-after.js",
+    "build-bundle": "browserify index.js --no-builtins -s unistUtilFindAllAfter > unist-util-find-all-after.js",
+    "build-mangle": "esmangle unist-util-find-all-after.js > unist-util-find-all-after.min.js",
+    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
     "lint": "xo",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test.js",
