@@ -17,7 +17,7 @@
     "utility"
   ],
   "dependencies": {
-    "unist-util-is": "^1.0.0"
+    "unist-util-is": "^2.0.0"
   },
   "repository": {
     "type": "git",

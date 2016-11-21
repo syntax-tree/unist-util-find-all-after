@@ -61,7 +61,7 @@ test('unist-util-find-all-after', function (t) {
             children: [{type: 'bar'}, {type: 'baz'}]
           }, 0, false);
         },
-        /Expected function, string, or node as test/
+        /Expected function, string, or object as test/
       );
 
       assert.throws(
@@ -71,7 +71,7 @@ test('unist-util-find-all-after', function (t) {
             children: [{type: 'bar'}, {type: 'baz'}]
           }, 0, true);
         },
-        /Expected function, string, or node as test/
+        /Expected function, string, or object as test/
       );
     },
     'should fail for invalid `test`'
