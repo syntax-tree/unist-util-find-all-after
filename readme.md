@@ -55,13 +55,13 @@ Find all children after `index` (or `node`) in `parent`, that passes `test`
 
 <!-- Definitions -->
 
-[travis-badge]: https://img.shields.io/travis/wooorm/unist-util-find-all-after.svg
+[travis-badge]: https://img.shields.io/travis/syntax-tree/unist-util-find-all-after.svg
 
-[travis]: https://travis-ci.org/wooorm/unist-util-find-all-after
+[travis]: https://travis-ci.org/syntax-tree/unist-util-find-all-after
 
-[codecov-badge]: https://img.shields.io/codecov/c/github/wooorm/unist-util-find-all-after.svg
+[codecov-badge]: https://img.shields.io/codecov/c/github/syntax-tree/unist-util-find-all-after.svg
 
-[codecov]: https://codecov.io/github/wooorm/unist-util-find-all-after
+[codecov]: https://codecov.io/github/syntax-tree/unist-util-find-all-after
 
 [npm]: https://docs.npmjs.com/cli/install
 
@@ -69,8 +69,8 @@ Find all children after `index` (or `node`) in `parent`, that passes `test`
 
 [author]: http://wooorm.com
 
-[unist]: https://github.com/wooorm/unist
+[unist]: https://github.com/syntax-tree/unist
 
-[node]: https://github.com/wooorm/unist#node
+[node]: https://github.com/syntax-tree/unist#node
 
-[is]: https://github.com/wooorm/unist-util-is
+[is]: https://github.com/syntax-tree/unist-util-is
