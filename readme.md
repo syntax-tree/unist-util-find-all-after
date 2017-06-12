@@ -49,6 +49,19 @@ Find all children after `index` (or `node`) in `parent`, that passes `test`
 
 [`Array.<Node>`][node] — Child nodes of `parent` passing `test`.
 
+## Related
+
+*   [`unist-util-find-after`](https://github.com/syntax-tree/unist-util-find-after)
+    — Find a node after another node
+*   [`unist-util-find-before`](https://github.com/syntax-tree/unist-util-find-before)
+    — Find a node before another node
+*   [`unist-util-find-all-before`](https://github.com/syntax-tree/unist-util-find-all-before)
+    — Find all nodes before another node
+*   [`unist-util-find-all-between`](https://github.com/mrzmmr/unist-util-find-all-between)
+    — Find all nodes between two nodes
+*   [`unist-util-find`](https://github.com/blahah/unist-util-find)
+    — Find nodes matching a predicate
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
