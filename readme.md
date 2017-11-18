@@ -62,6 +62,14 @@ Find all children after `index` (or `node`) in `parent`, that passes `test`
 *   [`unist-util-find`](https://github.com/blahah/unist-util-find)
     — Find nodes matching a predicate
 
+## Contribute
+
+See [`contribute.md` in `syntax-tree/unist`][contribute] for ways to get
+started.
+
+This organisation has a [Code of Conduct][coc].  By interacting with this
+repository, organisation, or community you agree to abide by its terms.
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
@@ -87,3 +95,7 @@ Find all children after `index` (or `node`) in `parent`, that passes `test`
 [node]: https://github.com/syntax-tree/unist#node
 
 [is]: https://github.com/syntax-tree/unist-util-is
+
+[contribute]: https://github.com/syntax-tree/unist/blob/master/contributing.md
+
+[coc]: https://github.com/syntax-tree/unist/blob/master/code-of-conduct.md
