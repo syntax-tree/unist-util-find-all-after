@@ -5,7 +5,7 @@
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
-[**Unist**][unist] utility to find nodes after another node.
+[**unist**][unist] utility to find nodes after another node.
 
 ## Installation
 
