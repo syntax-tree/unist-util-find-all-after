@@ -18,12 +18,15 @@ function findAllAfter(parent, index, test) {
   children = parent.children
   length = children.length
 
-  if (index && index.type) {
-    index = children.indexOf(index)
-  }
-
-  if (isNaN(index) || index < 0 || index === Infinity) {
+  if (index === undefined) {
     throw new Error('Expected positive finite index or child node')
+  } else if (index && typeof index !== 'number') {
+    index = children.indexOf(index)
+    if (index < 0) {
+      throw new Error('Expected child node')
+    }
+  } else if (index < 0 || index === Infinity) {
+    throw new Error('Expected positive finite index')
   }
 
   while (++index < length) {
