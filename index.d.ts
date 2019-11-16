@@ -13,5 +13,5 @@ export = findAllAfter
 declare function findAllAfter<T extends Node>(
   parent: Parent,
   index: number | Node,
-  test: Test<T> | Array<Test<T>>
+  test?: Test<T> | Array<Test<T>>
 ): Node[]
