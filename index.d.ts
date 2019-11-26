@@ -8,7 +8,7 @@ export = findAllAfter
  * Unist utility to get all children of a parent after a node or index
  *
  * @param parent Parent to search in
- * @param Index or Node to start from
+ * @param index or Node to start from
  * @param test that Nodes must pass to be included
  * @returns Array of found Nodes
  */
