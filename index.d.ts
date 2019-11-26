@@ -1,3 +1,5 @@
+// TypeScript Version: 3.5
+
 import {Node, Parent} from 'unist'
 import {Test} from 'unist-util-is/index'
 
