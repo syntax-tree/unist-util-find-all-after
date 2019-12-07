@@ -30,15 +30,29 @@ test('unist-util-find-all-after', function(t) {
     assert.throws(function() {
       findAllAfter({type: 'foo', children: []})
     }, /Expected positive finite index or child node/)
+  }, 'should fail without index')
 
+  t.doesNotThrow(function() {
     assert.throws(function() {
       findAllAfter({type: 'foo', children: []}, -1)
-    }, /Expected positive finite index/)
+    }, /Expected positive finite number as index/)
+
+    assert.throws(function() {
+      findAllAfter({type: 'foo', children: []}, Infinity)
+    }, /Expected positive finite number as index/)
+
+    assert.throws(function() {
+      findAllAfter({type: 'foo', children: []}, false)
+    }, /Expected positive finite number as index/)
+
+    assert.throws(function() {
+      findAllAfter({type: 'foo', children: []}, '')
+    }, /Expected positive finite number as index/)
 
     assert.throws(function() {
       findAllAfter({type: 'foo', children: []}, {type: 'bar'})
     }, /Expected child node/)
-  }, 'should fail without index')
+  }, 'should fail with invalid index')
 
   t.doesNotThrow(function() {
     assert.throws(function() {
