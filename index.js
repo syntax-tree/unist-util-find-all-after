@@ -25,8 +25,11 @@ function findAllAfter(parent, index, test) {
     if (index < 0) {
       throw new Error('Expected child node')
     }
-  } else if (index < 0 || index === Infinity) {
-    throw new Error('Expected positive finite index')
+  }
+
+  if (typeof index !== 'number' || index < 0 || index === Infinity) {
+    console.log('Throw finite index')
+    throw new Error('Expected positive finite number as index')
   }
 
   while (++index < length) {
