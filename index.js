@@ -28,7 +28,6 @@ function findAllAfter(parent, index, test) {
   }
 
   if (typeof index !== 'number' || index < 0 || index === Infinity) {
-    console.log('Throw finite index')
     throw new Error('Expected positive finite number as index')
   }
 
