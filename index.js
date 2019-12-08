@@ -22,7 +22,7 @@ function findAllAfter(parent, index, test) {
     throw new Error('Expected positive finite index or child node')
   } else if (index && typeof index !== 'number') {
     index = children.indexOf(index)
-    if (index < 0) {
+    if (index === -1) {
       throw new Error('Expected child node')
     }
   }
