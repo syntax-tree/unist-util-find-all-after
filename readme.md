@@ -10,15 +10,15 @@
 
 [**unist**][unist] utility to find nodes after another node.
 
-## Installation
+## Install
 
 [npm][]:
 
-```bash
+```sh
 npm install unist-util-find-all-after
 ```
 
-## Usage
+## Use
 
 ```js
 var u = require('unist-builder')
@@ -41,9 +41,9 @@ Yields:
 
 ```js
 [
-  { type: 'leaf', value: 'leaf 4' },
-  { type: 'leaf', value: 'leaf 6' },
-  { type: 'leaf', value: 'leaf 7' }
+  {type: 'leaf', value: 'leaf 4'},
+  {type: 'leaf', value: 'leaf 6'},
+  {type: 'leaf', value: 'leaf 7'}
 ]
 ```
 
@@ -51,8 +51,8 @@ Yields:
 
 ### `findAllAfter(parent, node|index[, test])`
 
-Find all children after `index` (or `node`) in `parent`, that passes `test`
-(when given).
+Find all children after `index` (or `node`) in `parent` that pass `test` (when
+given).
 
 ###### Parameters
 
@@ -68,16 +68,31 @@ Find all children after `index` (or `node`) in `parent`, that passes `test`
 
 ## Related
 
+*   [`unist-util-visit`](https://github.com/syntax-tree/unist-util-visit)
+    — Recursively walk over nodes
+*   [`unist-util-visit-parents`](https://github.com/syntax-tree/unist-util-visit-parents)
+    — Like `visit`, but with a stack of parents
+*   [`unist-util-filter`](https://github.com/eush77/unist-util-filter)
+    — Create a new tree with all nodes that pass a test
+*   [`unist-util-map`](https://github.com/syntax-tree/unist-util-map)
+    — Create a new tree with all nodes mapped by a given function
+*   [`unist-util-flatmap`](https://gitlab.com/staltz/unist-util-flatmap)
+    — Create a new tree by mapping (to an array) with the provided function and
+    then flattening
 *   [`unist-util-find-after`](https://github.com/syntax-tree/unist-util-find-after)
     — Find a node after another node
 *   [`unist-util-find-before`](https://github.com/syntax-tree/unist-util-find-before)
     — Find a node before another node
+*   [`unist-util-find-all-after`](https://github.com/syntax-tree/unist-util-find-all-after)
+    — Find all nodes after another node
 *   [`unist-util-find-all-before`](https://github.com/syntax-tree/unist-util-find-all-before)
     — Find all nodes before another node
 *   [`unist-util-find-all-between`](https://github.com/mrzmmr/unist-util-find-all-between)
     — Find all nodes between two nodes
-*   [`unist-util-find`](https://github.com/blahah/unist-util-find)
-    — Find nodes matching a predicate
+*   [`unist-util-remove`](https://github.com/eush77/unist-util-remove)
+    — Remove nodes from a tree that pass a test
+*   [`unist-util-select`](https://github.com/eush77/unist-util-select)
+    — Select nodes with CSS-like selectors
 
 ## Contribute
 
@@ -85,8 +100,8 @@ See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
 started.
 See [`support.md`][support] for ways to get help.
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
