@@ -1,15 +1,17 @@
 {
   "name": "unist-util-find-all-after",
   "version": "3.0.0",
-  "description": "Utility to find nodes after another node",
+  "description": "unist utility to find nodes after another node",
   "license": "MIT",
   "keywords": [
     "unist",
+    "unist-util",
+    "util",
+    "utility",
+    "tree",
     "node",
     "find",
-    "after",
-    "util",
-    "utility"
+    "after"
   ],
   "repository": "syntax-tree/unist-util-find-all-after",
   "bugs": "https://github.com/syntax-tree/unist-util-find-all-after/issues",
