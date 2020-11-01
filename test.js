@@ -1,6 +1,5 @@
 'use strict'
 
-var assert = require('assert')
 var test = require('tape')
 var remark = require('remark')
 var findAllAfter = require('.')
@@ -26,105 +25,170 @@ test('unist-util-find-all-after', function (t) {
     'should fail without parent node'
   )
 
-  t.doesNotThrow(function () {
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter({type: 'foo', children: []})
-    }, /Expected positive finite index or child node/)
-  }, 'should fail without index')
+    },
+    /Expected child node or index/,
+    'should fail without index'
+  )
 
-  t.doesNotThrow(function () {
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter({type: 'foo', children: []}, -1)
-    }, /Expected positive finite number as index/)
+    },
+    /Expected positive finite number as index/,
+    'should fail with invalid index (#1)'
+  )
 
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter({type: 'foo', children: []}, Infinity)
-    }, /Expected positive finite number as index/)
+    },
+    /Expected positive finite number as index/,
+    'should fail with invalid index (#2)'
+  )
 
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter({type: 'foo', children: []}, false)
-    }, /Expected positive finite number as index/)
+    },
+    /Expected child node or index/,
+    'should fail with invalid index (#3)'
+  )
 
-    assert.throws(function () {
-      findAllAfter({type: 'foo', children: []}, '')
-    }, /Expected positive finite number as index/)
+  t.throws(
+    function () {
+      findAllAfter({type: 'foo', children: []}, -1)
+    },
+    /Expected positive finite number as index/,
+    'should fail with invalid index (#4)'
+  )
 
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter({type: 'foo', children: []}, {type: 'bar'})
-    }, /Expected child node/)
-  }, 'should fail with invalid index')
+    },
+    /Expected child node/,
+    'should fail with invalid index (#5)'
+  )
 
-  t.doesNotThrow(function () {
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter(
-        {
-          type: 'foo',
-          children: [{type: 'bar'}, {type: 'baz'}]
-        },
+        {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
         false
       )
-    }, /Expected function, string, or object as test/)
+    },
+    /Expected function, string, or object as test/,
+    'should fail for invalid `test` (#1)'
+  )
 
-    assert.throws(function () {
+  t.throws(
+    function () {
       findAllAfter(
-        {
-          type: 'foo',
-          children: [{type: 'bar'}, {type: 'baz'}]
-        },
+        {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
         true
       )
-    }, /Expected function, string, or object as test/)
-  }, 'should fail for invalid `test`')
+    },
+    /Expected function, string, or object as test/,
+    'should fail for invalid `test` (#2)'
+  )
 
-  t.doesNotThrow(function () {
-    var result = children.slice(2)
+  t.deepEqual(
+    findAllAfter(paragraph, children[1]),
+    children.slice(2),
+    'should return the following node when without `test` (#1)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 1),
+    children.slice(2),
+    'should return the following node when without `test` (#1)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 7),
+    [],
+    'should return the following node when without `test` (#1)'
+  )
 
-    assert.deepStrictEqual(findAllAfter(paragraph, children[1]), result)
-    assert.deepStrictEqual(findAllAfter(paragraph, 1), result)
-    assert.deepStrictEqual(findAllAfter(paragraph, 7), [])
-  }, 'should return the following node when without `test`')
+  t.deepEqual(
+    findAllAfter(paragraph, 0, children[6]),
+    [children[6]],
+    'should return `node` when given a `node` and existing (#1)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, children[0], children[1]),
+    [children[1]],
+    'should return `node` when given a `node` and existing (#2)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 0, children[1]),
+    [children[1]],
+    'should return `node` when given a `node` and existing (#3)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, children[0], children[0]),
+    [],
+    'should return `node` when given a `node` and existing (#4)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 0, children[0]),
+    [],
+    'should return `node` when given a `node` and existing (#5)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 1, children[1]),
+    [],
+    'should return `node` when given a `node` and existing (#6)'
+  )
 
-  t.doesNotThrow(function () {
-    assert.deepStrictEqual(findAllAfter(paragraph, 0, children[6]), [
-      children[6]
-    ])
-    assert.deepStrictEqual(findAllAfter(paragraph, children[0], children[1]), [
-      children[1]
-    ])
-    assert.deepStrictEqual(findAllAfter(paragraph, 0, children[1]), [
-      children[1]
-    ])
-    assert.deepStrictEqual(
-      findAllAfter(paragraph, children[0], children[0]),
-      []
-    )
-    assert.deepStrictEqual(findAllAfter(paragraph, 0, children[0]), [])
-    assert.deepStrictEqual(findAllAfter(paragraph, 1, children[1]), [])
-  }, 'should return `node` when given a `node` and existing')
+  t.deepEqual(
+    findAllAfter(paragraph, 0, 'strong'),
+    [children[3]],
+    'should return a child when given a `type` and existing (#1)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 3, 'strong'),
+    [],
+    'should return a child when given a `type` and existing (#2)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, children[0], 'strong'),
+    [children[3]],
+    'should return a child when given a `type` and existing (#3)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, children[3], 'strong'),
+    [],
+    'should return a child when given a `type` and existing (#4)'
+  )
 
-  t.doesNotThrow(function () {
-    assert.deepStrictEqual(findAllAfter(paragraph, 0, 'strong'), [children[3]])
-    assert.deepStrictEqual(findAllAfter(paragraph, 3, 'strong'), [])
-    assert.deepStrictEqual(findAllAfter(paragraph, children[0], 'strong'), [
-      children[3]
-    ])
-    assert.deepStrictEqual(findAllAfter(paragraph, children[3], 'strong'), [])
-  }, 'should return a child when given a `type` and existing')
+  t.deepEqual(
+    findAllAfter(paragraph, 0, test),
+    children.slice(5),
+    'should return a child when given a `test` and existing (#1)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, 6, test),
+    [],
+    'should return a child when given a `test` and existing (#2)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, children[4], test),
+    children.slice(5),
+    'should return a child when given a `test` and existing (#3)'
+  )
+  t.deepEqual(
+    findAllAfter(paragraph, children[6], test),
+    [],
+    'should return a child when given a `test` and existing (#4)'
+  )
 
-  t.doesNotThrow(function () {
-    var result = children.slice(5)
-
-    assert.deepStrictEqual(findAllAfter(paragraph, 0, test), result)
-    assert.deepStrictEqual(findAllAfter(paragraph, 6, test), [])
-    assert.deepStrictEqual(findAllAfter(paragraph, children[4], test), result)
-    assert.deepStrictEqual(findAllAfter(paragraph, children[6], test), [])
-
-    function test(node, n) {
-      return n >= 5
-    }
-  }, 'should return a child when given a `test` and existing')
+  function test(node, n) {
+    return n >= 5
+  }
 
   t.end()
 })
