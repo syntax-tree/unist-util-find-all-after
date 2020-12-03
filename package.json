@@ -44,12 +44,12 @@
     "tape": "^5.0.0",
     "tinyify": "^3.0.0",
     "typescript": "^4.0.0",
-    "xo": "^0.34.0"
+    "xo": "^0.35.0"
   },
   "scripts": {
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "build-bundle": "browserify . -s unistUtilFindAllAfter -o unist-util-find-all-after.js",
-    "build-mangle": "browserify . -s unistUtilFindAllAfter -p tinyify -o unist-util-find-all-after.min.js",
+    "build-mangle": "browserify . -s unistUtilFindAllAfter -o unist-util-find-all-after.min.js -p tinyify",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test",
     "test-coverage": "nyc --reporter lcov tape test.js",

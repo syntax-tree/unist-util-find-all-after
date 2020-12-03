@@ -12,26 +12,26 @@ const parent: Parent = {
   children: [heading]
 }
 
-/*=== missing params ===*/
+/* === missing params === */
 // $ExpectError
 findAllAfter()
 // $ExpectError
 findAllAfter(parent)
 
-/*=== find by index/node ===*/
+/* === find by index/node === */
 findAllAfter(parent, 1)
 findAllAfter(parent, heading)
 // $ExpectError
 findAllAfter(parent, false)
 
-/*=== find with test ===*/
+/* === find with test === */
 // $ExpectError
 findAllAfter(parent, 1, false)
 findAllAfter(parent, 1, 'paragraph')
 
-/*=== invalid return ===*/
+/* === invalid return === */
 // $ExpectError
 const returnIsString: string = findAllAfter(parent, 1)
 
-/*=== valid return ===*/
+/* === valid return === */
 const nodes: Node[] = findAllAfter(parent, 1)
