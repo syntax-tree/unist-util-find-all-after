@@ -1,6 +1,6 @@
 {
   "name": "unist-util-find-all-after",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "unist utility to find nodes after another node",
   "license": "MIT",
   "keywords": [
