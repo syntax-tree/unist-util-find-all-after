@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('unist').Node} Node
+ */
+
 import test from 'tape'
 import remark from 'remark'
 import {findAllAfter} from './index.js'
@@ -9,6 +13,7 @@ var children = paragraph.children
 test('unist-util-find-all-after', function (t) {
   t.throws(
     function () {
+      // @ts-ignore runtime.
       findAllAfter()
     },
     /Expected parent node/,
@@ -17,6 +22,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
+      // @ts-ignore runtime.
       findAllAfter({type: 'foo'})
     },
     /Expected parent node/,
@@ -25,6 +31,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
+      // @ts-ignore runtime.
       findAllAfter({type: 'foo', children: []})
     },
     /Expected child node or index/,
@@ -49,6 +56,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
+      // @ts-ignore runtime.
       findAllAfter({type: 'foo', children: []}, false)
     },
     /Expected child node or index/,
@@ -76,6 +84,7 @@ test('unist-util-find-all-after', function (t) {
       findAllAfter(
         {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
+        // @ts-ignore runtime.
         false
       )
     },
@@ -88,6 +97,7 @@ test('unist-util-find-all-after', function (t) {
       findAllAfter(
         {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
+        // @ts-ignore runtime.
         true
       )
     },
@@ -184,7 +194,11 @@ test('unist-util-find-all-after', function (t) {
     'should return a child when given a `test` and existing (#4)'
   )
 
-  function test(node, n) {
+  /**
+   * @param {Node} _
+   * @param {number} n
+   */
+  function test(_, n) {
     return n >= 5
   }
 
