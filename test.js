@@ -43,7 +43,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
-      findAllAfter({type: 'foo', children: []}, Infinity)
+      findAllAfter({type: 'foo', children: []}, Number.POSITIVE_INFINITY)
     },
     /Expected positive finite number as index/,
     'should fail with invalid index (#2)'

@@ -13,7 +13,7 @@ function findAllAfter(parent, index, test) {
   }
 
   if (typeof index === 'number') {
-    if (index < 0 || index === Infinity) {
+    if (index < 0 || index === Number.POSITIVE_INFINITY) {
       throw new Error('Expected positive finite number as index')
     }
   } else {
