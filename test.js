@@ -1,8 +1,6 @@
-'use strict'
-
-var test = require('tape')
-var remark = require('remark')
-var findAllAfter = require('.')
+import test from 'tape'
+import remark from 'remark'
+import {findAllAfter} from './index.js'
 
 var tree = remark().parse('Some *emphasis*, **importance**, and `code`.')
 var paragraph = tree.children[0]

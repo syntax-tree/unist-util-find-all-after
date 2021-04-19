@@ -1,5 +1,2 @@
 coverage/
-unist-util-find-all-after.js
-unist-util-find-all-after.min.js
-*.json
 *.md

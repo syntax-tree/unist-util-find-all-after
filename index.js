@@ -1,10 +1,6 @@
-'use strict'
+import {convert} from 'unist-util-is'
 
-var convert = require('unist-util-is/convert')
-
-module.exports = findAllAfter
-
-function findAllAfter(parent, index, test) {
+export function findAllAfter(parent, index, test) {
   var is = convert(test)
   var results = []
 
