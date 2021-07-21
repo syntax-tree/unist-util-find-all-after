@@ -26,9 +26,9 @@ export const findAllAfter =
      * @returns {Array.<Node>}
      */
     function (parent, index, test) {
-      var is = convert(test)
+      const is = convert(test)
       /** @type {Array.<Node>} */
-      var results = []
+      const results = []
 
       if (!parent || !parent.type || !parent.children) {
         throw new Error('Expected parent node')

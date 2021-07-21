@@ -6,14 +6,14 @@ import test from 'tape'
 import remark from 'remark'
 import {findAllAfter} from './index.js'
 
-var tree = remark().parse('Some *emphasis*, **importance**, and `code`.')
+const tree = remark().parse('Some *emphasis*, **importance**, and `code`.')
 // @ts-expect-error: hush.
-var paragraph = tree.children[0]
-var children = paragraph.children
+const paragraph = tree.children[0]
+const children = paragraph.children
 
-test('unist-util-find-all-after', function (t) {
+test('unist-util-find-all-after', (t) => {
   t.throws(
-    function () {
+    () => {
       // @ts-expect-error runtime.
       findAllAfter()
     },
@@ -22,7 +22,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       // @ts-expect-error runtime.
       findAllAfter({type: 'foo'})
     },
@@ -31,7 +31,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       // @ts-expect-error runtime.
       findAllAfter({type: 'foo', children: []})
     },
@@ -40,7 +40,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       findAllAfter({type: 'foo', children: []}, -1)
     },
     /Expected positive finite number as index/,
@@ -48,7 +48,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       findAllAfter({type: 'foo', children: []}, Number.POSITIVE_INFINITY)
     },
     /Expected positive finite number as index/,
@@ -56,7 +56,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       // @ts-expect-error runtime.
       findAllAfter({type: 'foo', children: []}, false)
     },
@@ -65,7 +65,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       findAllAfter({type: 'foo', children: []}, -1)
     },
     /Expected positive finite number as index/,
@@ -73,7 +73,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       findAllAfter({type: 'foo', children: []}, {type: 'bar'})
     },
     /Expected child node/,
@@ -81,7 +81,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       findAllAfter(
         {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
@@ -94,7 +94,7 @@ test('unist-util-find-all-after', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       findAllAfter(
         {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
