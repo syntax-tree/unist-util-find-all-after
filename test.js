@@ -7,13 +7,14 @@ import remark from 'remark'
 import {findAllAfter} from './index.js'
 
 var tree = remark().parse('Some *emphasis*, **importance**, and `code`.')
+// @ts-expect-error: hush.
 var paragraph = tree.children[0]
 var children = paragraph.children
 
 test('unist-util-find-all-after', function (t) {
   t.throws(
     function () {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       findAllAfter()
     },
     /Expected parent node/,
@@ -22,7 +23,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       findAllAfter({type: 'foo'})
     },
     /Expected parent node/,
@@ -31,7 +32,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       findAllAfter({type: 'foo', children: []})
     },
     /Expected child node or index/,
@@ -56,7 +57,7 @@ test('unist-util-find-all-after', function (t) {
 
   t.throws(
     function () {
-      // @ts-ignore runtime.
+      // @ts-expect-error runtime.
       findAllAfter({type: 'foo', children: []}, false)
     },
     /Expected child node or index/,
@@ -84,7 +85,7 @@ test('unist-util-find-all-after', function (t) {
       findAllAfter(
         {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
-        // @ts-ignore runtime.
+        // @ts-expect-error runtime.
         false
       )
     },
@@ -97,7 +98,7 @@ test('unist-util-find-all-after', function (t) {
       findAllAfter(
         {type: 'foo', children: [{type: 'bar'}, {type: 'baz'}]},
         0,
-        // @ts-ignore runtime.
+        // @ts-expect-error runtime.
         true
       )
     },
@@ -196,10 +197,10 @@ test('unist-util-find-all-after', function (t) {
 
   /**
    * @param {Node} _
-   * @param {number} n
+   * @param {number|null|undefined} n
    */
   function test(_, n) {
-    return n >= 5
+    return typeof n === 'number' && n >= 5
   }
 
   t.end()
