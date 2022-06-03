@@ -1,14 +1,14 @@
 /**
  * @typedef {import('unist').Node} Node
+ * @typedef {import('mdast').Paragraph} Paragraph
  */
 
 import test from 'tape'
-import remark from 'remark'
+import {remark} from 'remark'
 import {findAllAfter} from './index.js'
 
 const tree = remark().parse('Some *emphasis*, **importance**, and `code`.')
-// @ts-expect-error: hush.
-const paragraph = tree.children[0]
+const paragraph = /** @type {Paragraph} */ (tree.children[0])
 const children = paragraph.children
 
 test('unist-util-find-all-after', (t) => {
@@ -123,31 +123,37 @@ test('unist-util-find-all-after', (t) => {
   )
 
   t.deepEqual(
+    // @ts-expect-error TS doesn’t understand nodes.
     findAllAfter(paragraph, 0, children[6]),
     [children[6]],
     'should return `node` when given a `node` and existing (#1)'
   )
   t.deepEqual(
+    // @ts-expect-error TS doesn’t understand nodes.
     findAllAfter(paragraph, children[0], children[1]),
     [children[1]],
     'should return `node` when given a `node` and existing (#2)'
   )
   t.deepEqual(
+    // @ts-expect-error TS doesn’t understand nodes.
     findAllAfter(paragraph, 0, children[1]),
     [children[1]],
     'should return `node` when given a `node` and existing (#3)'
   )
   t.deepEqual(
+    // @ts-expect-error TS doesn’t understand nodes.
     findAllAfter(paragraph, children[0], children[0]),
     [],
     'should return `node` when given a `node` and existing (#4)'
   )
   t.deepEqual(
+    // @ts-expect-error TS doesn’t understand nodes.
     findAllAfter(paragraph, 0, children[0]),
     [],
     'should return `node` when given a `node` and existing (#5)'
   )
   t.deepEqual(
+    // @ts-expect-error TS doesn’t understand nodes.
     findAllAfter(paragraph, 1, children[1]),
     [],
     'should return `node` when given a `node` and existing (#6)'
