@@ -9,25 +9,36 @@
 
 import {convert} from 'unist-util-is'
 
+/**
+ * Find nodes in `parent` after another `node` or after an index, that pass
+ * `test`.
+ *
+ * @param parent
+ *   Parent node.
+ * @param index
+ *   Child of `parent` or it’s index.
+ * @param [test]
+ *   `unist-util-is`-compatible test.
+ * @returns
+ *   Children of `parent` that pass `test`.
+ */
 export const findAllAfter =
   /**
    * @type {(
-   *  (<T extends Node>(node: Parent, index: Node|number, test: T['type']|Partial<T>|import('unist-util-is').TestFunctionPredicate<T>|Array.<T['type']|Partial<T>|import('unist-util-is').TestFunctionPredicate<T>>) => Array.<T>) &
-   *  ((node: Parent, index: Node|number, test?: null|undefined|Type|Props|TestFunctionAnything|Array<Type|Props|TestFunctionAnything>) => Array.<Node>)
+   *  (<T extends Node>(node: Parent, index: Node|number, test: T['type']|Partial<T>|import('unist-util-is').TestFunctionPredicate<T>|Array<T['type']|Partial<T>|import('unist-util-is').TestFunctionPredicate<T>>) => Array<T>) &
+   *  ((node: Parent, index: Node|number, test?: null|undefined|Type|Props|TestFunctionAnything|Array<Type|Props|TestFunctionAnything>) => Array<Node>)
    * )}
    */
   (
     /**
-     * Utility to get all children of a parent after a node or index
-     *
-     * @param {Parent} parent Parent node
-     * @param {Node|number} index Child of `parent`, or it’s index
-     * @param {null|undefined|Type|Props|TestFunctionAnything|Array<Type|Props|TestFunctionAnything>} [test] is-compatible test (such as a type)
-     * @returns {Array.<Node>}
+     * @param {Parent} parent
+     * @param {Node|number} index
+     * @param {null|undefined|Type|Props|TestFunctionAnything|Array<Type|Props|TestFunctionAnything>} [test]
+     * @returns {Array<Node>}
      */
     function (parent, index, test) {
       const is = convert(test)
-      /** @type {Array.<Node>} */
+      /** @type {Array<Node>} */
       const results = []
 
       if (!parent || !parent.type || !parent.children) {
