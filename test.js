@@ -7,12 +7,19 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {fromMarkdown} from 'mdast-util-from-markdown'
 import {findAllAfter} from './index.js'
+import * as mod from './index.js'
 
 const tree = fromMarkdown('Some *emphasis*, **importance**, and `code`.')
 const paragraph = /** @type {Paragraph} */ (tree.children[0])
 const children = paragraph.children
 
-test('unist-util-find-all-after', () => {
+test('findAllAfter', () => {
+  assert.deepEqual(
+    Object.keys(mod).sort(),
+    ['findAllAfter'],
+    'should expose the public api'
+  )
+
   assert.throws(
     () => {
       // @ts-expect-error runtime.
